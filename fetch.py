@@ -21,6 +21,7 @@ def data_write_to_file():
     try:
         user_list = github_repos_fetch()
     except UnboundLocalError:
+        print('404 Not Found!')
         exit(1)
 
     if not len(user_list):
