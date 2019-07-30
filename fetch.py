@@ -16,14 +16,16 @@ def github_repos_fetch():
 
 
 def data_write_to_file():
-    user_list = github_repos_fetch()
     obj = {}
     new_user_list = []
+    try:
+        user_list = github_repos_fetch()
+    except UnboundLocalError:
+        exit(1)
 
-    if not isinstance(user_list, list):
-        raise ValueError
     if not len(user_list):
         print('data is empty!')
+        exit(1)
 
     for i, item in enumerate(user_list):
         new_user_list.append({
@@ -39,4 +41,3 @@ def data_write_to_file():
 
 if __name__ == '__main__':
     data_write_to_file()
-
